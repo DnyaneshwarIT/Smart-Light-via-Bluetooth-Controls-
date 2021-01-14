@@ -1,0 +1,29 @@
+/******************************************************************************************
+Smart Light to controll via Bluetooth
+Created By Dnyaneshwar R.Patil
+Mail. dnyaneshwarit@gmail.com
+
+****************************************************************************************/
+
+char Incoming_value = 0;
+
+
+void setup()
+{
+serial.begin(9600);
+pinMode(13,OUTPUT);
+}
+
+void loop()
+{
+if (Serial.available() > 0)
+{
+Incoming_Value = Serial.read();
+Serial.print(Incoming_Value);
+Serial.print("\n");
+	if(Incoming_Value == '1')
+		digitalWrite(13, HIGH);
+	else if (Incoming_Value == '0')
+		digitalWrite(13, LOW);
+}
+}
